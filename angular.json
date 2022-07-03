@@ -41,7 +41,7 @@
             ],
             "scripts": [              
               "src/assets/vendors/jquery/dist/jquery.js",
-              "node_modules/bootstrap/dist/js/bootstrap.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/assets/vendors/fastclick/lib/fastclick.js",
               "src/assets/vendors/nprogress/nprogress.js",
               "src/assets/vendors/Chart.js/dist/Chart.min.js",
