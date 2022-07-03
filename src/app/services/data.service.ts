@@ -13,9 +13,9 @@ import { map } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-  private headers: Headers;
+  //private headers: Headers;
   constructor(private _http: Http,private _router: Router,private _authenService: AuthenService, 
-  private _notificationService:NotificationService, private _utilityService: UtilityService) {
+  private _notificationService:NotificationService, private _utilityService: UtilityService, private headers:Headers) {
 
   }
 
@@ -63,7 +63,7 @@ export class DataService {
     }else{
       let errMsg = (error.message) ? error.message : error.status ? `${error.status} - ${error.statusTex}` : "Lỗi hệ thống";
       this._notificationService.printErrorMessage(errMsg);  
-      return throwError(errMsg);   
+      throwError(() => errMsg);   
     }
   }
 }
