@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "type": "module"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +23,7 @@
     "bootstrap": "^5.1.3",
     "font-awesome": "^4.7.0",
     "gentelella": "^1.4.0",
+    "jquery": "^3.6.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -38,5 +40,6 @@
     "karma-jasmine": "~5.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~4.7.2"
-  }
+  },
+  "type":"module"
 }
