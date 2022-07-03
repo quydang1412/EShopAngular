@@ -36,6 +36,8 @@
               "src/assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css",
               "src/assets/vendors/jqvmap/dist/jqvmap.min.css",
               "src/assets/vendors/bootstrap-daterangepicker/daterangepicker.css",
+              "node_modules/alertifyjs/build/css/alertify.min.css",
+              "node_modules/alertifyjs/build/css/themes/default.css",
               "src/assets/css/custom.css",
               "node_modules/animate.css/animate.min.css"
             ],
@@ -68,6 +70,7 @@
 
               "src/assets/vendors/moment/min/moment.min.js",
               "src/assets/vendors/bootstrap-daterangepicker/daterangepicker.js",
+              "node_modules/alertifyjs/build/alertify.js",
               "src/assets/js/custom.js"
 
               
