@@ -61,15 +61,15 @@ export class DataClientService {
     return this._httpClient.post<any>(SystemConstants.BASE_API + uri, data, httpOptionFile);
   }
 
-  public handleError(error: any) {
-    if(error.status){
+  public handleError(error: any) : void {
+    if(error.status == 401){
       localStorage.removeItem(SystemConstants.CURRENT_USER);
       this._notificationService.printErrorMessage(MessageConstants.LOGIN_AGAIN_MSG);
       this._utilityService.navigateToLogin();
     }else{
       let errMsg = (error.message) ? error.message : error.status ? `${error.status} - ${error.statusTex}` : "Lỗi hệ thống";
       this._notificationService.printErrorMessage(errMsg);  
-      return throwError(() => new Error(errMsg));  
+      throwError(() => new Error(errMsg));  
     }
   }
 

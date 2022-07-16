@@ -1,29 +1,50 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Http, Headers, RequestOptions, Response} from '@angular/http';
 import { SystemConstants } from './../core/common/system.constants';
 import { LoggedInUser } from './../core/domain/loggedin.user';
-import 'rxjs/add/operator/map';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class AuthenService {
 
-  constructor(private _http: Http) { }
+  constructor(private _http: HttpClient) { }
+
+  // login(username: string, password: string) {
+  //   let body = "userName=" + encodeURIComponent(username) +
+  //     "&password=" + encodeURIComponent(password) +
+  //     "&grant_type=password";
+  //   let headers = new Headers();
+  //   headers.append("Content-Type", "application/x-www-form-urlencoded");
+  //   let options = new RequestOptions({ headers: headers });
+
+  //   return this._http.post(SystemConstants.BASE_API + '/api/oauth/token', body, options).map((response: Response) => {
+  //     let user: LoggedInUser = response.json();
+  //     if (user && user.access_token) {
+  //       localStorage.removeItem(SystemConstants.CURRENT_USER);
+  //       localStorage.setItem(SystemConstants.CURRENT_USER, JSON.stringify(user));
+  //     }
+  //   });
+  // }
 
   login(username: string, password: string) {
     let body = "userName=" + encodeURIComponent(username) +
       "&password=" + encodeURIComponent(password) +
       "&grant_type=password";
-    let headers = new Headers();
-    headers.append("Content-Type", "application/x-www-form-urlencoded");
-    let options = new RequestOptions({ headers: headers });
+    let headersContent = new HttpHeaders();
+    headersContent.append("Content-Type", "application/x-www-form-urlencoded");
+    
+    let options = {headers: headersContent};
 
-    return this._http.post(SystemConstants.BASE_API + '/api/oauth/token', body, options).map((response: Response) => {
+    this._http.post<any>(SystemConstants.BASE_API + '/api/oauth/token', body, options).subscribe((response: Response) => {
       let user: LoggedInUser = response.json();
       if (user && user.access_token) {
         localStorage.removeItem(SystemConstants.CURRENT_USER);
         localStorage.setItem(SystemConstants.CURRENT_USER, JSON.stringify(user));
       }
     });
+
+    return this._http.post<any>(SystemConstants.BASE_API + '/api/oauth/token', body, options);
   }
+
   logout() {
     localStorage.removeItem(SystemConstants.CURRENT_USER);
   }
@@ -38,9 +59,11 @@ export class AuthenService {
   }
 
   getLoggedInUser(): LoggedInUser {
-    let user: LoggedInUser;
+    let user:any = LoggedInUser;
     if (this.isUserAuthenticated()) {
-      var userData = JSON.parse(localStorage.getItem(SystemConstants.CURRENT_USER));
+      let userData:any = {};
+      let userJson = localStorage.getItem(SystemConstants.CURRENT_USER) || null;
+      userData = userJson != null ? JSON.parse(userJson) : {};    
       user = new LoggedInUser(userData.access_token, userData.username, userData.fullName, userData.email, userData.avatar);
     }
     else
