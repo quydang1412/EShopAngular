@@ -13,6 +13,7 @@ const homeRoutes: Routes = [
 
 @NgModule({
   declarations: [
+    
   ],
   imports: [
     CommonModule,

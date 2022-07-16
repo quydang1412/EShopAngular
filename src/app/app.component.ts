@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, AfterViewChecked, OnInit } from '@angular/core';
+import logger from 'src/assets/js/demoExport.js';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
+export class AppComponent implements AfterViewChecked{
+  constructor(private elementRef: ElementRef) { }
+    ngAfterViewChecked(){
+      var s = document.createElement("script");
+      s.type = "text/javascript";
+      s.src = "../assets/js/custom.js";
+      this.elementRef.nativeElement.appendChild(s);
+    }
   title = 'EShopAngular';
+  ngOnInit(): void {
+    logger();
+  }
 }
