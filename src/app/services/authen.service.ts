@@ -29,8 +29,10 @@ export class AuthenService {
     let body = "userName=" + encodeURIComponent(username) +
       "&password=" + encodeURIComponent(password) +
       "&grant_type=password";
-    let headersContent = new HttpHeaders();
-    headersContent.append("Content-Type", "application/x-www-form-urlencoded");
+    let headersContent = new HttpHeaders({
+      "Content-Type" : "application/x-www-form-urlencoded"
+    });
+    //headersContent.append("Content-Type", "application/x-www-form-urlencoded");
     
     let options = {headers: headersContent};
 

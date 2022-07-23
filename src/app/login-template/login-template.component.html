@@ -1,0 +1,54 @@
+<h1>login-template works!</h1>
+<form (ngSubmit)="submitForm()">
+    <h1>LoginTemplateForm</h1>
+    <div class="row">
+        <div class="col-md-3">
+            <input autocomplete="on" type="text" class="form-control" placeholder="username" name="username" [(ngModel)]="username">
+            <div class="has-error">username is required</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <input autocomplete="on" type="password" class="form-control" placeholder="password" name="password" [(ngModel)]="password">
+            <div class="has-error">password is required</div>
+        </div>
+    </div>
+    <button type="submit">Submit</button>
+    <!-- <button type="submit" (click)="SubmitForm()">Submit</button> -->
+</form>
+
+<form [formGroup]="formData" (ngSubmit)="submitForm()">
+    <h1>LoginReactiveForm</h1>
+    <div class="row">
+        <div class="col-md-3">
+            <input autocomplete="on" type="text" class="form-control" placeholder="username1" formControlName="username1">
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <input autocomplete="on" type="password" class="form-control" placeholder="password1" formControlName="password1">
+            
+        </div>
+    </div>
+    <button type="submit">Submit</button>
+    <!-- <button type="submit" (click)="submitForm()">Submit</button> -->
+</form>
+
+<form [formGroup]="formData2" (ngSubmit)="submitForm()">
+    <h1>LoginReactiveForm2</h1>
+    <div class="row">
+        <div class="col-md-3">
+            <input autocomplete="on" type="text" class="form-control" placeholder="username2" formControlName="username2">
+            <div *ngIf="!formData2.controls.username2.valid" class="has-error">username is required</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <input autocomplete="on" type="password" class="form-control" placeholder="password2" formControlName="password2">
+            <div *ngIf="!formData2.controls.password2.valid" class="has-error">password is required</div>
+        </div>
+    </div>
+    <button [disabled]="!formData2.valid" type="submit">Submit</button>
+    <!-- <button type="submit" (click)="submitForm()">Submit</button> -->
+</form>
