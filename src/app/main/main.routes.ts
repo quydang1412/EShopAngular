@@ -9,10 +9,10 @@ export const mainRoutes: Routes = [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
 
             //localhost:4200/main/home
-            { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
+            { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) }
 
             //localhost:4200/user
-            { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
+            //{ path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
 
             
         ]

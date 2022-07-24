@@ -1,5 +1,5 @@
 export class LoggedInUser {
-    public id: string = "";
+    //public id: string = "";
     public access_token: string;
     public username: string;
     public fullName: string;

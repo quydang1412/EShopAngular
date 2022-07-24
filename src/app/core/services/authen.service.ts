@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response} from '@angular/http';
-import { SystemConstants } from './../core/common/system.constants';
-import { LoggedInUser } from './../core/domain/loggedin.user';
+import { SystemConstants } from '../common/system.constants';
+import { LoggedInUser } from '../domain/loggedin.user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class AuthenService {
@@ -37,12 +37,22 @@ export class AuthenService {
     let options = {headers: headersContent};
 
     this._http.post<any>(SystemConstants.BASE_API + '/api/oauth/token', body, options).subscribe((response: Response) => {
-      let user: LoggedInUser = response.json();
+      let userLogin: any = [];
+      userLogin = response;
+      let user: LoggedInUser = {
+        access_token: userLogin['permissions'],
+        username: userLogin['username'],
+        fullName: userLogin['fullName'],
+        email: userLogin['email'],
+        avatar: userLogin['avatar']
+      };
+
       if (user && user.access_token) {
         localStorage.removeItem(SystemConstants.CURRENT_USER);
         localStorage.setItem(SystemConstants.CURRENT_USER, JSON.stringify(user));
       }
     });
+    //123654$
 
     return this._http.post<any>(SystemConstants.BASE_API + '/api/oauth/token', body, options);
   }

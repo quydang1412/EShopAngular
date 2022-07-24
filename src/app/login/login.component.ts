@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificationService } from '../services/notification.service';
-import { AuthenService } from '../services/authen.service';
+import { NotificationService } from '../core/services/notification.service';
+import { AuthenService } from '../core/services/authen.service';
 import { MessageConstants } from '../core/common/message.constants';
 import {UrlConstants} from '../core/common/url.constants';
 import { Router} from '@angular/router';
