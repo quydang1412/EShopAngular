@@ -4,9 +4,7 @@ import { LoginTemplateComponent } from './login-template.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { FormBuilder, FormControl } from '@angular/forms';
-export const routes:Routes = [
-  {path:'', component:LoginTemplateComponent}
-];
+
 
 
 @NgModule({
@@ -17,7 +15,7 @@ export const routes:Routes = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+
   ]
 })
 export class LoginTemplateModule { }

@@ -8,13 +8,13 @@ const routes: Routes = [
   //localhost:4200
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 
-  {path: 'loginTemplate', loadChildren: () => import('./login-template/login-template.module').then(m => m.LoginTemplateModule)},
+  {path: 'loginTemplate', component: LoginTemplateComponent},
 
   //localhost:4200/login
-  { path: 'login', loadChildren: () => import('./login/login.module').then(m =>m.LoginModule) },
+  { path: 'login', component: LoginComponent },
 
   //localhost:4200/main
-  { path: 'main', loadChildren: () => import('./main/main.module').then(m =>m.MainModule) }
+  { path: 'main', component: MainComponent }
 ];
 
 @NgModule({
