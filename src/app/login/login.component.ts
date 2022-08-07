@@ -24,10 +24,11 @@ export class LoginComponent implements OnInit {
   login() {
     this.loading = true;
     this.authenService.login(this.model.username, this.model.password).subscribe((response)=>{
-      this.router.navigate([UrlConstants.HOME]);
+      this.router.navigate([UrlConstants.MAIN]);
     }, error => {
       this.notificationService.printErrorMessage(MessageConstants.SYSTEM_ERROR_MSG);
       this.loading = false;
+      //this.router.navigate([UrlConstants.USER]);
     });
   }
 

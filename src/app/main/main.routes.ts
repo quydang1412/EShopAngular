@@ -6,7 +6,7 @@ import { FunctionComponent } from "./function/function.component";
 import { ProductCategoryComponent } from "./product-category/product-category.component";
 import { RoleComponent} from "./role/role.component"
 export const mainRoutes: Routes = [
-    {path:'main', component: HomeComponent},
+    // {path:'main', component: HomeComponent},
     {path:'main/product', component: ProductComponent},
     {path:'main/user', component: UserComponent},
     {path:'main/home', component: HomeComponent},
