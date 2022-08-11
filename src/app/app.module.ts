@@ -11,6 +11,7 @@ import { MainModule } from './main/main.module';
 import { NotificationService } from './core/services/notification.service';
 import { UtilityService } from './core/services/utility.service';
 import { AuthenService } from './core/services/authen.service';
+import { AuthGuard } from './core/guards/auth.guard';
 // import { DataService } from './core/services/data.service';
 // import { DataClientService } from './core/services/data-client.service';
 // import { UserComponent } from './main/user/user.component';
@@ -42,7 +43,8 @@ import { AuthenService } from './core/services/authen.service';
     UtilityService, 
     AuthenService,
     // DataService,
-    // DataClientService
+    // DataClientService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
